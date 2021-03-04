@@ -90,6 +90,40 @@ class LoginController: UIViewController {
         return button
     }()
     
+    // Define sign up button
+    private let signUpButton: UIButton = {
+        let button = UIButton(type: .system)
+        
+        let attrs: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.7), .font: UIFont.systemFont(ofSize: 16)]
+        
+        let attributedTitle = NSMutableAttributedString(string: "Não tem uma conta?  ", attributes: attrs)
+        
+        let boldAttrs: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.7), .font: UIFont.boldSystemFont(ofSize: 16)]
+        
+        attributedTitle.append(NSAttributedString(string: "Registre-se", attributes: boldAttrs))
+        
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        
+        return button
+    }()
+    
+    // Define forgotPassword button
+    private let forgotPassword: UIButton = {
+        let button = UIButton(type: .system)
+        
+        let attrs: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.7), .font: UIFont.systemFont(ofSize: 16)]
+        
+        let attributedTitle = NSMutableAttributedString(string: "Esqueceu sua senha?  ", attributes: attrs)
+        
+        let boldAttrs: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.7), .font: UIFont.boldSystemFont(ofSize: 16)]
+        
+        attributedTitle.append(NSAttributedString(string: "Clique aqui", attributes: boldAttrs))
+        
+        button.setAttributedTitle(attributedTitle, for: .normal)
+        
+        return button
+    }()
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -134,7 +168,7 @@ class LoginController: UIViewController {
         iconImage.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 32)
         
         // Creates a vertical stack
-        let stack = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, loginButton])
+        let stack = UIStackView(arrangedSubviews: [emailTextField, passwordTextField, loginButton, forgotPassword])
         
         // Makes stack vertical
         stack.axis = .vertical
@@ -153,6 +187,10 @@ class LoginController: UIViewController {
             paddingRight: 32
         )
         
+        // Adds sign up button at the bottom screen centered
+        view.addSubview(signUpButton)
+        signUpButton.centerX(inView: view)
+        signUpButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
      
     }
 }
