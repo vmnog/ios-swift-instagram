@@ -21,7 +21,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: scene)
         
         // Setting maintabcontroller to be our rootviewcontroller
-        window?.rootViewController = MainTabController()
+//        window?.rootViewController = MainTabController()
+        window?.rootViewController = UINavigationController(rootViewController: LoginController())
         window?.makeKeyAndVisible()
     }
 
