@@ -35,13 +35,74 @@ class FeedCell: UICollectionViewCell {
         return profileButton
     }()
     
+    // Defines post image
+    private let postImageView: UIImageView = {
+        let imagePost = UIImageView()
+        // Image will fill all the container
+        imagePost.contentMode = .scaleAspectFill
+        imagePost.clipsToBounds = true
+        imagePost.isUserInteractionEnabled = true
+        imagePost.image = #imageLiteral(resourceName: "venom-7")
+        
+        return imagePost
+    }()
+    
+    // Defines post button
+    private lazy var likeButton: UIButton = {
+        let buttonLike = UIButton(type: .system)
+        buttonLike.setImage(#imageLiteral(resourceName: "like_unselected"), for: .normal)
+        buttonLike.tintColor = .black
+        return buttonLike
+    }()
+    
+    // Defines comment button
+    private lazy var commentButton: UIButton = {
+        let buttonComment = UIButton(type: .system)
+        buttonComment.setImage(#imageLiteral(resourceName: "comment"), for: .normal)
+        buttonComment.tintColor = .black
+        return buttonComment
+    }()
+    
+    // Defines share button
+    private lazy var shareButton: UIButton = {
+        let buttonShare = UIButton(type: .system)
+        buttonShare.setImage(#imageLiteral(resourceName: "send2"), for: .normal)
+        buttonShare.tintColor = .black
+        return buttonShare
+    }()
+    
+    // Defines likes counter
+    private let likesLabel: UILabel = {
+        let label = UILabel()
+        label.text = "20 likes"
+        label.font = UIFont.boldSystemFont(ofSize: 12)
+        return label
+    }()
+    
+    // Defines caption label
+    private let captionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Alguma label de teste"
+        label.font = UIFont.boldSystemFont(ofSize: 12)
+        return label
+    }()
+    
+    // Defines publish date label
+    private let publishTimeLabel: UILabel = {
+        let label = UILabel()
+        label.text = "2 dias atrás"
+        label.font = UIFont.systemFont(ofSize: 12)
+        label.textColor = .lightGray
+        return label
+    }()
+    
     // MARK: - Lifecycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         backgroundColor = .white
-        
+
         // Adds image to the post
         addSubview(profileImageView)
         
@@ -56,7 +117,22 @@ class FeedCell: UICollectionViewCell {
         
         // Adds username button to the post
         addSubview(usernameButton)
+        
+        // Center buttons alignment along with the user profile picture
         usernameButton.centerY(inView: profileImageView, leftAnchor: profileImageView.rightAnchor, paddingLeft: 8)
+        
+        // Adds post image
+        addSubview(postImageView)
+        
+        // Set image position to start at the bottom of the profile container
+        postImageView.anchor(top: profileImageView.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 8)
+        
+        // ?
+        postImageView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
+        
+        // Adds button icons below the image post
+        configureActionButtons()
+        
         
     }
     
@@ -70,5 +146,19 @@ class FeedCell: UICollectionViewCell {
     // Handler -> When user clicks posts owner username
     @objc func didTapUsername() {
         print("clicou")
+    }
+    
+    // MARK: - Helpers
+    
+    // Configure a list of buttons alignment and positioning
+    func configureActionButtons() {
+        // Define button list below the image post
+        let stackView = UIStackView(arrangedSubviews:  [likeButton, commentButton, shareButton])
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        
+        // Adds buttons list to the post
+        addSubview(stackView)
+        stackView.anchor(top: postImageView.bottomAnchor, width: 120, height: 50)
     }
 }
