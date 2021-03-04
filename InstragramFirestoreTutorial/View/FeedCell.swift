@@ -75,7 +75,7 @@ class FeedCell: UICollectionViewCell {
     private let likesLabel: UILabel = {
         let label = UILabel()
         label.text = "20 likes"
-        label.font = UIFont.boldSystemFont(ofSize: 12)
+        label.font = UIFont.boldSystemFont(ofSize: 13)
         return label
     }()
     
@@ -83,7 +83,7 @@ class FeedCell: UICollectionViewCell {
     private let captionLabel: UILabel = {
         let label = UILabel()
         label.text = "Alguma label de teste"
-        label.font = UIFont.boldSystemFont(ofSize: 12)
+        label.font = UIFont.boldSystemFont(ofSize: 14)
         return label
     }()
     
@@ -127,12 +127,23 @@ class FeedCell: UICollectionViewCell {
         // Set image position to start at the bottom of the profile container
         postImageView.anchor(top: profileImageView.bottomAnchor, left: leftAnchor, right: rightAnchor, paddingTop: 8)
         
-        // ?
+        // Defines post image height and width
         postImageView.heightAnchor.constraint(equalTo: widthAnchor, multiplier: 1).isActive = true
         
         // Adds button icons below the image post
         configureActionButtons()
         
+        // Adds like counter label
+        addSubview(likesLabel)
+        likesLabel.anchor(top: likeButton.bottomAnchor, left: leftAnchor, paddingLeft: 8)
+        
+        // Adds post title caption
+        addSubview(captionLabel)
+        captionLabel.anchor(top: likesLabel.bottomAnchor, left: leftAnchor, paddingTop: 8, paddingLeft: 8)
+        
+        // Adds post publish date
+        addSubview(publishTimeLabel)
+        publishTimeLabel.anchor(top: captionLabel.bottomAnchor, left: leftAnchor, paddingTop: 8, paddingLeft: 8)
         
     }
     
