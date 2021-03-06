@@ -59,15 +59,8 @@ class LoginController: UIViewController {
     private let signUpButton: UIButton = {
         let button = UIButton(type: .system)
         
-        let attrs: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.7), .font: UIFont.systemFont(ofSize: 16)]
-        
-        let attributedTitle = NSMutableAttributedString(string: "Não tem uma conta?  ", attributes: attrs)
-        
-        let boldAttrs: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.7), .font: UIFont.boldSystemFont(ofSize: 16)]
-        
-        attributedTitle.append(NSAttributedString(string: "Registre-se", attributes: boldAttrs))
-        
-        button.setAttributedTitle(attributedTitle, for: .normal)
+        // Uses UIButton created in Utils/Extensions
+        button.attributedTitle(firstPart: "Não tem uma conta?", secondPart: "Registre-se")
         
         return button
     }()
@@ -76,15 +69,8 @@ class LoginController: UIViewController {
     private let forgotPassword: UIButton = {
         let button = UIButton(type: .system)
         
-        let attrs: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.7), .font: UIFont.systemFont(ofSize: 16)]
-        
-        let attributedTitle = NSMutableAttributedString(string: "Esqueceu sua senha?  ", attributes: attrs)
-        
-        let boldAttrs: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(white: 1, alpha: 0.7), .font: UIFont.boldSystemFont(ofSize: 16)]
-        
-        attributedTitle.append(NSAttributedString(string: "Clique aqui", attributes: boldAttrs))
-        
-        button.setAttributedTitle(attributedTitle, for: .normal)
+        // Uses UIButton created in Utils/Extensions
+        button.attributedTitle(firstPart: "Esqueceu sua senha?", secondPart: "Clique aqui")
         
         return button
     }()
