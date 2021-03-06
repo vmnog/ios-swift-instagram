@@ -9,16 +9,16 @@
 import UIKit
 //import JGProgressHUD
 
-//extension UIViewController {
+extension UIViewController {
 //    static let hud = JGProgressHUD(style: .dark)
 //    
-//    func configureGradientLayer() {
-//        let gradient = CAGradientLayer()
-//        gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor]
-//        gradient.locations = [0, 1]
-//        view.layer.addSublayer(gradient)
-//        gradient.frame = view.frame
-//    }
+    func configureGradientLayer() {
+        let gradient = CAGradientLayer()
+        gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor]
+        gradient.locations = [0, 2]
+        view.layer.addSublayer(gradient)
+        gradient.frame = view.frame
+    }
 //    
 //    func showLoader(_ show: Bool) {
 //        view.endEditing(true)
@@ -35,7 +35,7 @@ import UIKit
 //        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
 //        present(alert, animated: true, completion: nil)
 //    }
-//}
+}
 
 extension UIButton {
     func attributedTitle(firstPart: String, secondPart: String) {
@@ -46,6 +46,15 @@ extension UIButton {
         attributedTitle.append(NSAttributedString(string: secondPart, attributes: boldAtts))
         
         setAttributedTitle(attributedTitle, for: .normal)
+    }
+    
+    func styleAsAuthButton(label: String) {
+        setTitle(label, for: .normal)
+        setTitleColor(.white, for: .normal)
+        backgroundColor = #colorLiteral(red: 0.4374820559, green: 0.2786109558, blue: 0.770463198, alpha: 0.5977632705)
+        layer.cornerRadius = 5
+        setHeight(50)
+        titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
     }
 }
 

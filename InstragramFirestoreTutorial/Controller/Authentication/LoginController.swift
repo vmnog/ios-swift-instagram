@@ -24,9 +24,6 @@ class LoginController: UIViewController {
         // Make the keyboard for email
         inputEmail.keyboardType = .emailAddress
         
-        // Set keyboard to email type
-        inputEmail.keyboardType = .emailAddress
-        
         // Disable auto capitalize
         inputEmail.autocapitalizationType = .none;
         
@@ -35,7 +32,7 @@ class LoginController: UIViewController {
     
     // Define password input
     private let passwordTextField: CustomTextField = {
-        let inputPassword = CustomTextField(placeholder: "Password")
+        let inputPassword = CustomTextField(placeholder: "Senha")
         
         // Make characters typped hidden
         inputPassword.isSecureTextEntry = true
@@ -46,12 +43,9 @@ class LoginController: UIViewController {
     // Define log in button
     private let loginButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Entrar", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.backgroundColor = #colorLiteral(red: 0.4374820559, green: 0.2786109558, blue: 0.770463198, alpha: 0.5977632705)
-        button.layer.cornerRadius = 5
-        button.setHeight(50)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        
+        button.styleAsAuthButton(label: "Entrar")
+        
         return button
     }()
     
@@ -99,27 +93,14 @@ class LoginController: UIViewController {
     // MARK: - Helpers
     
     func configureUI() {
-        view.backgroundColor = .white
+        // Creates gradient background
+        configureGradientLayer()
         
         // Hide navigation top bar
         navigationController?.navigationBar.isHidden = true
         
         // Set status bar to white color
         navigationController?.navigationBar.barStyle = .black
-        
-        // Creates gradient background
-        let gradient = CAGradientLayer()
-        gradient.colors = [UIColor.systemPurple.cgColor, UIColor.systemBlue.cgColor]
-        
-        // Adds the gradient above the main layer
-        view.layer.addSublayer(gradient)
-        
-        // Setting gradient dimensions to fill whole screen
-        gradient.frame = view.frame
-        
-        // Setting gradient to be half page down
-        gradient.locations = [0, 2]
-        
         
         // Adds instagram logo
         view.addSubview(iconImage)

@@ -10,11 +10,134 @@ import UIKit
 class RegistrationController: UIViewController {
     // MARK: - Properties
     
+    // Define add photo button
+    private let plushPhotoButton: UIButton = {
+        let button = UIButton(type: .system)
+       
+        button.setImage(#imageLiteral(resourceName: "plus_photo"), for: .normal)
+        button.tintColor = .white
+        button.setDimensions(height: 140, width: 140)
+
+        
+        return button
+    }()
+    
+    // Define email input
+    private let emailTextField: CustomTextField = {
+        let inputEmail = CustomTextField(placeholder: "E-mail")
+        
+        // Make the keyboard for email
+        inputEmail.keyboardType = .emailAddress
+        
+        // Disable auto capitalize
+        inputEmail.autocapitalizationType = .none;
+        
+        return inputEmail
+    }()
+    
+    // Define password input
+    private let passwordTextField: CustomTextField = {
+        let inputPassword = CustomTextField(placeholder: "Senha")
+        
+        // Make characters typped hidden
+        inputPassword.isSecureTextEntry = true
+        
+        return inputPassword
+    }()
+    
+    // Define fullname input
+    private let fullnameTextField = CustomTextField(placeholder: "Nome completo")
+    
+    // Define username input
+    private let usernameTextField: CustomTextField = {
+        let tf = CustomTextField(placeholder: "Usuário")
+        
+        tf.autocapitalizationType = .none;
+        
+        return tf
+    }()
+    
+    // Define log in button
+    private let signUpButton: UIButton = {
+        let button = UIButton(type: .system)
+        
+        button.styleAsAuthButton(label: "Continuar")
+        
+        return button
+    }()
+    
+    // Define back to login button
+    private let alreadyHaveAccountButton: UIButton = {
+        let button = UIButton(type: .system)
+        
+        button.attributedTitle(firstPart: "Já possui uma conta ?", secondPart: "Clique aqui")
+        button.addTarget(self, action: #selector(handleShowLogin), for: .touchUpInside)
+        return button
+    }()
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemYellow
+        configureUI()
+    }
+    
+    // MARK: - Actions
+    
+    // When pressed it removes the top layer navigation (goBack)
+    @objc func handleShowLogin() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: - Helpers
+    
+    func configureUI() {
+        // Creates gradient background
+        configureGradientLayer()
+                
+        // Hide navigation top bar
+        navigationController?.navigationBar.isHidden = true
+        
+        // Set status bar to white color
+        navigationController?.navigationBar.barStyle = .black
+        
+        // Adds User's picture add button
+        view.addSubview(plushPhotoButton)
+        plushPhotoButton.centerX(inView: view)
+        plushPhotoButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 32)
+        
+        // Creates a vertical stack
+        let stack = UIStackView(
+                arrangedSubviews: [
+                    emailTextField,
+                    passwordTextField,
+                    usernameTextField,
+                    fullnameTextField,
+                    signUpButton
+                ])
+        
+        // Makes stack vertical
+        stack.axis = .vertical
+        stack.spacing = 20
+        
+        // Adds input vertical stack
+        view.addSubview(stack)
+        
+        // Align the stack below the instagram logo and centered
+        stack.anchor(
+            top: plushPhotoButton.bottomAnchor,
+            left: view.leftAnchor,
+            right: view.rightAnchor,
+            paddingTop: 32,
+            paddingLeft: 32,
+            paddingRight: 32
+        )
+        
+        // Adds alreadyHaveAccountButton
+        view.addSubview(alreadyHaveAccountButton)
+        alreadyHaveAccountButton.centerX(inView: view)
+        alreadyHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
+        
     }
 }
