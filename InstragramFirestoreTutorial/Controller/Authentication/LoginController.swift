@@ -18,7 +18,7 @@ class LoginController: UIViewController {
     }()
     
     // Define email input
-    private let emailTextField: UITextField = {
+    private let emailTextField: CustomTextField = {
         let inputEmail = CustomTextField(placeholder: "E-mail")
         
         // Make the keyboard for email
@@ -34,7 +34,7 @@ class LoginController: UIViewController {
     }()
     
     // Define password input
-    private let passwordTextField: UITextField = {
+    private let passwordTextField: CustomTextField = {
         let inputPassword = CustomTextField(placeholder: "Password")
         
         // Make characters typped hidden
@@ -55,16 +55,6 @@ class LoginController: UIViewController {
         return button
     }()
     
-    // Define sign up button
-    private let signUpButton: UIButton = {
-        let button = UIButton(type: .system)
-        
-        // Uses UIButton created in Utils/Extensions
-        button.attributedTitle(firstPart: "Não tem uma conta?", secondPart: "Registre-se")
-        
-        return button
-    }()
-    
     // Define forgotPassword button
     private let forgotPassword: UIButton = {
         let button = UIButton(type: .system)
@@ -75,11 +65,35 @@ class LoginController: UIViewController {
         return button
     }()
     
+    // Define sign up button
+    private let signUpButton: UIButton = {
+        let button = UIButton(type: .system)
+        
+        // Uses UIButton created in Utils/Extensions
+        button.attributedTitle(firstPart: "Não tem uma conta?", secondPart: "Registre-se")
+        
+        // addTarget(class that will handle the action, custom function handler, name of user event)
+        button.addTarget(self, action: #selector(handleShowSignUp), for: .touchUpInside)
+        
+        return button
+    }()
+    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
+    }
+    
+    // MARK: - Actions
+    
+    @objc func handleShowSignUp() {
+        // Create instance of Register Screen
+        let registerScreen = RegistrationController()
+        
+        // Tells our navigationController to navigate to the Register Screen
+        navigationController?.pushViewController(registerScreen, animated: true)
+        
     }
     
     // MARK: - Helpers
