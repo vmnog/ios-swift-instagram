@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E5799C5925F3277600DE44B8 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5799C5825F3277600DE44B8 /* CustomTextField.swift */; };
 		E57B0C5425F11D1800BB8D1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57B0C5325F11D1800BB8D1B /* AppDelegate.swift */; };
 		E57B0C5625F11D1800BB8D1B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57B0C5525F11D1800BB8D1B /* SceneDelegate.swift */; };
 		E57B0C5825F11D1800BB8D1B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57B0C5725F11D1800BB8D1B /* ViewController.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E5799C5825F3277600DE44B8 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		E57B0C5025F11D1800BB8D1B /* InstragramFirestoreTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstragramFirestoreTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E57B0C5325F11D1800BB8D1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E57B0C5525F11D1800BB8D1B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				E589522725F159BC00BC47FB /* FeedCell.swift */,
+				E5799C5825F3277600DE44B8 /* CustomTextField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5799C5925F3277600DE44B8 /* CustomTextField.swift in Sources */,
 				E57B0C5825F11D1800BB8D1B /* ViewController.swift in Sources */,
 				E589522F25F1902400BC47FB /* LoginController.swift in Sources */,
 				E589522825F159BC00BC47FB /* FeedCell.swift in Sources */,
