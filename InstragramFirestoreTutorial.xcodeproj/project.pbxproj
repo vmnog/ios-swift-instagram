@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E51716AD25F99F8B00082EC1 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51716AC25F99F8B00082EC1 /* AuthenticationViewModel.swift */; };
 		E5799C5925F3277600DE44B8 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5799C5825F3277600DE44B8 /* CustomTextField.swift */; };
 		E57B0C5425F11D1800BB8D1B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57B0C5325F11D1800BB8D1B /* AppDelegate.swift */; };
 		E57B0C5625F11D1800BB8D1B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E57B0C5525F11D1800BB8D1B /* SceneDelegate.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E51716AC25F99F8B00082EC1 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		E5799C5825F3277600DE44B8 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		E57B0C5025F11D1800BB8D1B /* InstragramFirestoreTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstragramFirestoreTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E57B0C5325F11D1800BB8D1B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 		E589521125F11E1F00BC47FB /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				E51716AC25F99F8B00082EC1 /* AuthenticationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 				E589522825F159BC00BC47FB /* FeedCell.swift in Sources */,
 				E589521F25F1326200BC47FB /* ImageSelectorController.swift in Sources */,
 				E589521C25F1325400BC47FB /* SearchController.swift in Sources */,
+				E51716AD25F99F8B00082EC1 /* AuthenticationViewModel.swift in Sources */,
 				E57B0C5425F11D1800BB8D1B /* AppDelegate.swift in Sources */,
 				E589521925F1324C00BC47FB /* FeedController.swift in Sources */,
 				E589521625F129CA00BC47FB /* MainTabController.swift in Sources */,
