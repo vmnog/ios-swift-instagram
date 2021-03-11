@@ -102,8 +102,9 @@ class LoginController: UIViewController {
             viewModel.password = sender.text
         }
         
-        print("email: \(viewModel.email)")
-        print("passwd: \(viewModel.password)")
+        loginButton.backgroundColor = viewModel.buttonBackgroundColor
+        loginButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
+        loginButton.isEnabled = viewModel.formIsValid
     }
     
     // MARK: - Helpers
