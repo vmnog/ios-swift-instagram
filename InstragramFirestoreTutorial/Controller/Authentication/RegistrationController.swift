@@ -138,7 +138,7 @@ class RegistrationController: UIViewController {
         // Adds User's picture add button
         view.addSubview(plushPhotoButton)
         plushPhotoButton.centerX(inView: view)
-        plushPhotoButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 32)
+        plushPhotoButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, paddingTop: 20)
         
         // Creates a vertical stack
         let stack = UIStackView(
@@ -152,7 +152,7 @@ class RegistrationController: UIViewController {
         
         // Makes stack vertical
         stack.axis = .vertical
-        stack.spacing = 20
+        stack.spacing = 15
         
         // Adds input vertical stack
         view.addSubview(stack)
@@ -162,7 +162,7 @@ class RegistrationController: UIViewController {
             top: plushPhotoButton.bottomAnchor,
             left: view.leftAnchor,
             right: view.rightAnchor,
-            paddingTop: 32,
+            paddingTop: 20,
             paddingLeft: 32,
             paddingRight: 32
         )
@@ -171,7 +171,6 @@ class RegistrationController: UIViewController {
         view.addSubview(alreadyHaveAccountButton)
         alreadyHaveAccountButton.centerX(inView: view)
         alreadyHaveAccountButton.anchor(bottom: view.safeAreaLayoutGuide.bottomAnchor)
-        
     }
     
     func configureNotificationObservers() {
