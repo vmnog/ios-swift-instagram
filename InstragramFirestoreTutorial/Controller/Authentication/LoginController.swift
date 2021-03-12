@@ -101,6 +101,8 @@ class LoginController: UIViewController {
         if sender == passwordTextField {
             viewModel.password = sender.text
         }
+        
+        updateForm()
     }
     
     // MARK: - Helpers

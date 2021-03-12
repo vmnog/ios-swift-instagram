@@ -19,6 +19,7 @@ class RegistrationController: UIViewController {
         button.setImage(#imageLiteral(resourceName: "plus_photo"), for: .normal)
         button.tintColor = .white
         button.setDimensions(height: 140, width: 140)
+        button.addTarget(self, action: #selector(addUserPhoto), for: .touchUpInside)
 
         
         return button
@@ -114,6 +115,14 @@ class RegistrationController: UIViewController {
         
     }
     
+    @objc func addUserPhoto() {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = true
+        
+        present(picker, animated: true, completion: nil)
+    }
+    
     // MARK: - Helpers
     
     func configureUI() {
@@ -167,7 +176,7 @@ class RegistrationController: UIViewController {
     
     func configureNotificationObservers() {
         
-        // When email or password calls textDidChange
+        // When user changes inputs -> textDidChange
         emailTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         usernameTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
@@ -176,10 +185,42 @@ class RegistrationController: UIViewController {
     }
 }
 
+// MARK: - FormViewModel
+
 extension RegistrationController: FormViewModel {
     func updateForm() {
         signUpButton.backgroundColor = viewModel.buttonBackgroundColor
         signUpButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
         signUpButton.isEnabled = viewModel.formIsValid
+    }
+}
+
+// MARK: - UIImagePickerControllerDelegate
+
+extension RegistrationController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    // Handling when user finishs selecting photo
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        // Getting the selectedImage from imagePicker
+        guard let selectedImage = info[.editedImage] as? UIImage else { return  }
+        
+        // Making button rounded
+        plushPhotoButton.layer.cornerRadius = plushPhotoButton.frame.width / 2
+        
+        // Limits sublayers from button to not overlay the button size
+        plushPhotoButton.layer.masksToBounds = true
+        
+        // Change borderColor
+        plushPhotoButton.layer.borderColor = UIColor.white.cgColor
+        
+        // Change borderWidth
+        plushPhotoButton.layer.borderWidth = 2
+        
+        // Putting image above button without modifying its dimensions
+        plushPhotoButton.setImage(selectedImage.withRenderingMode(.alwaysOriginal), for: .normal)
+
+        // Closes image picker
+        self.dismiss(animated: true, completion: nil)
     }
 }
